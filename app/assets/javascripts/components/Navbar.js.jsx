@@ -1,4 +1,9 @@
 class Navbar extends React.Component {
+  constructor(){
+    super()
+    this.loginHandler = this.loginHandler.bind(this)
+    this.registerHandler = this.registerHandler.bind(this)
+  }
 
   componentDidMount () {
     this.sessionId()
@@ -15,6 +20,16 @@ class Navbar extends React.Component {
     })
   }
 
+  loginHandler(e){
+    e.preventDefault()
+    this.props.changeStates('Login')
+  }
+
+  registerHandler(e){
+    e.preventDefault()
+    this.props.changeStates('Register')
+  }
+
   sessionId () {
     if (this.props.session) {
       return (
@@ -23,7 +38,10 @@ class Navbar extends React.Component {
     }
     else {
       return(
-        <Login changeStates={this.changeStates} />
+        <span>
+          <a id='register-link' href='#' onClick={this.loginHandler}>Login</a> /
+          <a id='register-link' href='#' onClick={this.registerHandler}>Register</a>
+      </span>
       )
     }
   }
@@ -38,7 +56,7 @@ class Navbar extends React.Component {
       }
     }
     return (
-      <a href='#' id='logo' onClick={handler} className='navbar-link navbar-brand'>Meals</a>
+      <a href='#' id='logo' onClick={handler} className='navbar-brand'>Open Mic</a>
     )
   }
 
@@ -51,13 +69,18 @@ class Navbar extends React.Component {
   }
   render () {
     return (
-      <nav className='navbar navbar-default navbar-fixed-top'>
-        <div className='container-fluid'>
+      <nav className="navbar navbar-default" role="navigation">
+        <div className="navbar-header">
           {this.userName()}
+        </div>
+        <div className='navbar-center'>
           {this.homeLink()}
-          {this.sessionId()}
+          <div className='nav navbar-nav navbar-right'>
+            {this.sessionId()}
+          </div>
         </div>
       </nav>
+
     )
   }
 }
