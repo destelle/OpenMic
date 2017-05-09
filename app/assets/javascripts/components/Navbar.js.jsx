@@ -22,12 +22,13 @@ class Navbar extends React.Component {
 
   loginHandler(e){
     e.preventDefault()
-    this.props.changeStates('Login')
+    debugger
+    $('#popout').html('login')
   }
 
   registerHandler(e){
     e.preventDefault()
-    this.props.changeStates('Register')
+    $('#popout').html('register')
   }
 
   sessionId () {
