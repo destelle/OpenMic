@@ -75,9 +75,9 @@ class Navbar extends React.Component {
         </div>
         <div className='navbar-center'>
           {this.homeLink()}
-          <div className='nav navbar-nav navbar-right'>
-            {this.sessionId()}
-          </div>
+        </div>
+        <div className='navbar pull-right navbar-right'>
+          {this.sessionId()}
         </div>
       </nav>
 
