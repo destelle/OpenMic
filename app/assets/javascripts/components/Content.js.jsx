@@ -4,7 +4,8 @@ class Content extends React.Component {
     this.state = {
       mode: null,
       session: null,
-      username: null
+      username: null,
+      roomIn: null
     }
     this.changeStates = this.changeStates.bind(this)
   }
@@ -15,16 +16,22 @@ class Content extends React.Component {
       type: 'GET'
     })
     request.done((response) => {
-      if (response.sessionID) {
+      debugger
+      if (response.userRoom) {
+        debugger
+        this.changeStates('Room', response.sessionID, response.userName, response.userRoom)
+      }
+      else if(response.sessionID) {
         this.changeStates('Home', response.sessionID, response.userName)
-      } else {
+      }
+      else {
         this.changeStates('Home')
       }
     })
   }
 
   changeStates (mode, sessionID = null, username = null, roomIn = null) {
-    const home = <Home room={roomIn} sessionID={sessionID} changeStates={this.changeStates}/>
+    const home = <Home room={roomIn} sessionID={sessionID} username={username} changeStates={this.changeStates}/>
     const room = 'hi'
     let stateVariable = null
     switch (mode) {

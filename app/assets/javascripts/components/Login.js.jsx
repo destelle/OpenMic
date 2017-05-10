@@ -51,7 +51,12 @@ class Login extends React.Component {
       form.setState({
         errors: null
       })
-      this.props.changeStates('Home', successfulLogin['user_id'], successfulLogin['user_name'])
+      if (successfulLogin['user_room']){
+        this.props.changeStates('Room', successfulLogin['user_id'], successfulLogin['user_name'], successfulLogin['user_room'])
+      }else{
+        this.props.changeStates('Home', successfulLogin['user_id'], successfulLogin['user_name'])
+      }
+
       $("input").val('')
       $('#popout').css('visibility', 'hidden')
     })

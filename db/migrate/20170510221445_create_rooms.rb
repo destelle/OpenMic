@@ -1,4 +1,4 @@
-class CreateRoom < ActiveRecord::Migration[5.0]
+class CreateRooms < ActiveRecord::Migration[5.0]
   def change
     create_table :rooms do |t|
       t.integer :admin_id, null: false

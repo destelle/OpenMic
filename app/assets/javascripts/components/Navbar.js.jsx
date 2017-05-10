@@ -58,10 +58,10 @@ class Navbar extends React.Component {
   homeLink () {
     const handler = (e) => {
       e.preventDefault()
-      if (this.props.session) {
-        this.props.changeStates('Home', this.props.session, this.props.user)
+      if (this.props.roomIn) {
+        this.props.changeStates('Room', this.props.session, this.props.user, this.props.roomIn)
       } else {
-        this.props.changeStates('Login')
+        this.props.changeStates('Home',this.props.session, this.props.user)
       }
     }
     return (

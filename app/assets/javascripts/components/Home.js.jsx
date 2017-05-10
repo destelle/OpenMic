@@ -20,15 +20,13 @@ class Home extends React.Component {
 
   }
   handleCreate (e) {
+    let form = this
     var request = $.ajax({
-      url: '/room',
+      url: '/rooms',
       method: 'POST',
     })
-    request.success((successfulRegistration) => {
-      form.props.changeStates({
-        mode: 'Room',
-        
-      })
+    request.success(function (response) {
+      form.props.changeStates('Room', form.props.sessionID, form.props.username, response['roomId'])
     })
   }
 

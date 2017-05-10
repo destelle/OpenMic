@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :index, only: [:index]
   resource :users
   resource :sessions
+  resources :rooms
 end
