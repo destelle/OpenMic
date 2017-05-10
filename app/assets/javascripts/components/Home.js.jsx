@@ -4,7 +4,7 @@ class Home extends React.Component {
     this.state = {
       mode: null,
       errors: null,
-      room: null,
+      roomPass: null,
     }
     this.handleRoomChange = this.handleRoomChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -13,12 +13,30 @@ class Home extends React.Component {
 
   handleRoomChange (e) {
     this.setState({
-      room: e.target.value
+      roomPass: e.target.value
     })
   }
-  handleClick (e) {
 
+  handleClick (e) {
+    e.preventDefault()
+    let page = this
+    var request = $.ajax({
+      url: '/rooms/join',
+      type: 'POST',
+      data: { room: {password: page.state.roomPass}}
+    })
+    request.success(function (response) {
+      page.props.changeStates('Room', page.props.sessionID, page.props.username, response['roomId'])
+    })
+    request.fail(function(response){
+      page.setState({
+        mode: 'Home',
+        errors: response.errors,
+        room: null
+      })
+    })
   }
+
   handleCreate (e) {
     let form = this
     var request = $.ajax({
@@ -31,7 +49,7 @@ class Home extends React.Component {
   }
 
   createRoom(){
-    if(this.props.sessionID != null && this.props.room == null){
+    if(this.props.sessionID != null){
       return(
         <button type='button' className='btn btn-default' onClick={this.handleCreate}>Create Room</button>
       )
@@ -44,7 +62,7 @@ class Home extends React.Component {
         <ul className='errors'>
           {this.state.errors}
         </ul>
-        <form>
+        <form action='/rooms/join' method='post'>
           <div className='form-group'>
             <label htmlFor='room'>Enter room Id!</label>
             <input type='text' className='form-control' id='room' placeholder='TH15' onChange={this.handleRoomChange} />

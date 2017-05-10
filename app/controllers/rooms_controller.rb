@@ -1,6 +1,22 @@
 class RoomsController < ApplicationController
+
+  def show
+    room = Room.find(params[:id])
+    if room
+      user = User.find(room.admin_id)
+      render json: {
+        roomAdminId: room.admin_id,
+        roomAdminName:user.name,
+        roomPassword: room.password
+      }
+    else
+      render json: {
+        errors: 'No Room found'
+      }, status: 400
+  end
+end
+
   def create
-    p 'Got Here'
     alph = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
     password = (0..3).map { alph[rand(alph.length)] }.join
     user = User.find(session[:user_id])
@@ -17,4 +33,27 @@ class RoomsController < ApplicationController
         }, status: 400
       end
   end
+
+  def join
+    p 'hit here'
+    room = Room.find_by(room_params)
+    p room 
+    if room
+      user = User.find(room.admin_id)
+      render json: {
+        roomId: room.id
+      }
+    else
+      render json: {
+        errors: 'No Room found'
+      }, status: 400
+    end
+  end
+
+private
+def room_params
+  params.require(:room).permit(:password)
+end
+
+
 end

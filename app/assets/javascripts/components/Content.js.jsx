@@ -16,9 +16,8 @@ class Content extends React.Component {
       type: 'GET'
     })
     request.done((response) => {
-      debugger
+
       if (response.userRoom) {
-        debugger
         this.changeStates('Room', response.sessionID, response.userName, response.userRoom)
       }
       else if(response.sessionID) {
@@ -32,7 +31,7 @@ class Content extends React.Component {
 
   changeStates (mode, sessionID = null, username = null, roomIn = null) {
     const home = <Home room={roomIn} sessionID={sessionID} username={username} changeStates={this.changeStates}/>
-    const room = 'hi'
+    const room = <Room room={roomIn} sessionID={sessionID} username={username} changeStates={this.changeStates}/>
     let stateVariable = null
     switch (mode) {
       case 'Room':

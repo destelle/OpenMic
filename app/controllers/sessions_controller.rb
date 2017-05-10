@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def show
     if session[:user_id]
       user = User.find(session[:user_id])
-      render json: {sessionID: user.id, userName: user.name, userRoom: user.created_room }
+      render json: {sessionID: user.id, userName: user.name, userRoom: user.created_room.id }
     else
       render json: {sessionID: nil}
     end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       }, status: 400
     else
       session[:user_id] = user.id
-      render json: { user_id: user.id, user_name: user.name, user_room: user.created_room }, status: :created
+      render json: { user_id: user.id, user_name: user.name, user_room: user.created_room.id }, status: :created
     end
   end
 

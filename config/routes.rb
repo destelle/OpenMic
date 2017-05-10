@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resource :users
   resource :sessions
   resources :rooms
+
+  post '/rooms/join', to: 'rooms#join'
 end
