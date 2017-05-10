@@ -16,7 +16,7 @@ class Navbar extends React.Component {
   logoutHandler (e) {
     e.preventDefault()
     $.ajax({
-      url: '/sessions/' + this.props.session,
+      url: '/sessions',
       type: 'DELETE'
     }).done((response) => {
       this.props.changeStates('Login')
@@ -42,14 +42,14 @@ class Navbar extends React.Component {
   sessionId () {
     if (this.props.session) {
       return (
-        <button type='button' className='btn pull-right btn-default navbar-btn navbar-right' href='#' onClick={this.logoutHandler.bind(this)}>Logout</button>
+        <button type='button' className='btn btn-default navbar-btn' href='#' onClick={this.logoutHandler.bind(this)}>Logout</button>
       )
     }
     else {
       return(
-        <span>
-          <a id='register-link' href='#' onClick={this.loginHandler}>Login</a> /
-          <a id='register-link' href='#' onClick={this.registerHandler}>Register</a>
+        <span id ='links'>
+          <a className='register-link' href='#' onClick={this.loginHandler}>Login</a> /
+          <a className='register-link' href='#' onClick={this.registerHandler}>Register</a>
       </span>
       )
     }
@@ -81,13 +81,14 @@ class Navbar extends React.Component {
       <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
           {this.userName()}
+          <div className='navbar pull-right navbar-right'>
+            {this.sessionId()}
+          </div>
         </div>
         <div className='navbar-center'>
           {this.homeLink()}
         </div>
-        <div className='navbar pull-right navbar-right'>
-          {this.sessionId()}
-        </div>
+
         {this.state.popout}
       </nav>
 

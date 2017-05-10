@@ -87,10 +87,12 @@ class RegistrationForm extends React.Component {
           errors: null
         })
         this.props.changeStates('Home', successfulLogin['user_id'], successfulLogin['user_name'])
+        $("input").val('')
+        $('#popout').css('visibility', 'hidden')
       })
     })
 
-    $("input").val('')
+
   }
 
   render () {

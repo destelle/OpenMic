@@ -2,6 +2,15 @@
   float: none;
   font-size: 2.4em;
   }
+  #logo{
+    color: white;
+  }
+  #links {
+    color: white;
+  }
+  .register-link{
+    color: white;
+  }
 .navbar-center
 {
   position: absolute;
@@ -12,5 +21,25 @@
   margin: auto;
   height:100%;
   padding-top: 25px;
+}
 
+.navbar{
+  background-color: rgba(56,102,153,0.8);
+  border:none;
+
+}
+.pull-right{
+  background-color:transparent;
+}
+.navbar-header{
+  z-index: 1;
+  position: relative;
+
+}
+
+#nav-username{
+  margin-left: 2%;
+  margin-top: 8%;
+  color:black;
+  font-size: 1.3em;
 }
