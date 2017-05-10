@@ -7,18 +7,22 @@
   top: 100px;
   left: 40px;
   width: 300px;
+  height: auto;
   position: absolute;
   z-index: 10;
-  background-color: rgba(0,0,0,0.4);
+  color: white;
+  background-color: rgba(56,102,153,0.8);
 }
 
 #exit {
     background-color: Transparent;
     background-repeat:no-repeat;
+    position: relative;
     border: none;
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    color: white;
 }
 
 body{
@@ -27,4 +31,8 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: static;
+}
+
+h2{
+  text-align: center;
 }

@@ -17,7 +17,7 @@ class Popout extends React.Component {
       <div id='popout'>
         <button onClick={this.exitHandler} type="button" id='exit' className="btn btn-default btn-sm">
            <span className="glyphicon glyphicon-remove"></span>
-         </button>
+        </button>
         {this.props.mode}
       </div>
     )
