@@ -85,9 +85,6 @@ class Login extends React.Component {
           </div>
 
         </form>
-        <div className='register'>
-          <p>Don't have an account? <a id='register-link' href='#' onClick={handler}>Register</a> for OpenMic!</p>
-        </div>
       </div>
     )
   };

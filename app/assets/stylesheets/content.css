@@ -4,9 +4,19 @@
 }
 
 #popout{
-  margin-left: 48%;
+  top: 100px;
+  left: 40px;
+  width: 300px;
   position: absolute;
-  text-align: center;
   z-index: 10;
   background-color: rgba(0,0,0,0.4);
+}
+
+#exit {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }

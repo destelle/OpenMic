@@ -3,6 +3,9 @@ class Navbar extends React.Component {
     super()
     this.loginHandler = this.loginHandler.bind(this)
     this.registerHandler = this.registerHandler.bind(this)
+    this.state = {
+      popout: null,
+    }
   }
 
   componentDidMount () {
@@ -22,13 +25,18 @@ class Navbar extends React.Component {
 
   loginHandler(e){
     e.preventDefault()
-    debugger
-    $('#popout').html('login')
+    this.setState({
+      popout: <Popout mode={<Login changeStates={this.props.changeStates} />}/>
+    })
+    $('#popout').css('visibility', 'visible')
   }
 
   registerHandler(e){
     e.preventDefault()
-    $('#popout').html('register')
+    this.setState({
+      popout: <Popout mode={<RegistrationForm changeStates={this.props.changeStates} />}/>
+    })
+    $('#popout').css('visibility', 'visible')
   }
 
   sessionId () {
@@ -80,6 +88,7 @@ class Navbar extends React.Component {
         <div className='navbar pull-right navbar-right'>
           {this.sessionId()}
         </div>
+        {this.state.popout}
       </nav>
 
     )

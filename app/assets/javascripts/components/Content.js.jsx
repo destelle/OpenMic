@@ -48,8 +48,6 @@ class Content extends React.Component {
     return (
       <div>
         <Navbar user={this.state.username} session={this.state.session} changeStates={this.changeStates} />
-        <div id='popout'>
-        </div>
         <div id='overlay'>
         </div>
       </div>

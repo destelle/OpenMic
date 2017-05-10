@@ -102,7 +102,7 @@ class RegistrationForm extends React.Component {
         <div className='errors errors-container'>
           {this.listErrors()}
         </div>
-        <form action='/users' method='post'>
+        <form action='/users' method='post' className='bottom-padding'>
           <div className='form-group'>
             <label htmlFor='exampleInputName'>Full Name</label>
             <input type='text' className='form-control' id='exampleInputName' placeholder='John Doe' onChange={this.handleNameChange.bind(this)} />
