@@ -1,6 +1,8 @@
 .card {
   margin: 2%;
   text-align: center;
+  background-color: rgba(56,102,153,0.8);
+  color: white;
 }
 
 #popout{
@@ -35,4 +37,14 @@ body{
 
 h2{
   text-align: center;
+}
+#create-room{
+  padding-top: 2%;
+}
+
+#overlay{
+  margin: 2%;
+}
+#joining{
+  padding:2%;
 }

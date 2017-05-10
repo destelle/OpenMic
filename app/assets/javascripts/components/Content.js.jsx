@@ -18,24 +18,21 @@ class Content extends React.Component {
       if (response.sessionID) {
         this.changeStates('Home', response.sessionID, response.userName)
       } else {
-        this.changeStates('Login')
+        this.changeStates('Home')
       }
     })
   }
 
-  changeStates (mode, sessionID = null, username = null) {
-    const registration = <RegistrationForm changeStates={this.changeStates} />
-    const login = <Login changeStates={this.changeStates} />
+  changeStates (mode, sessionID = null, username = null, roomIn = null) {
+    const home = <Home room={roomIn} sessionID={sessionID} changeStates={this.changeStates}/>
+    const room = 'hi'
     let stateVariable = null
     switch (mode) {
-      case 'Register':
-        stateVariable = registration
-        break
-      case 'Login':
-        stateVariable = login
+      case 'Room':
+        stateVariable = room
         break
       default:
-        stateVariable = login
+        stateVariable = home
         break
     }
     this.setState({
@@ -49,6 +46,7 @@ class Content extends React.Component {
       <div>
         <Navbar user={this.state.username} session={this.state.session} changeStates={this.changeStates} />
         <div id='overlay'>
+          {this.state.mode}
         </div>
       </div>
     )
