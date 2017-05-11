@@ -19,7 +19,7 @@ class Navbar extends React.Component {
       url: '/sessions',
       type: 'DELETE'
     }).done((response) => {
-      this.props.changeStates('Login')
+      location.reload()
     })
   }
 

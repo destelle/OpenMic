@@ -14,7 +14,7 @@ class Popout extends React.Component {
 
   render(){
     return(
-      <div id='popout'>
+      <div id='popout' className='card'>
         <button onClick={this.exitHandler} type="button" id='exit' className="btn btn-default btn-sm">
            <span className="glyphicon glyphicon-remove"></span>
         </button>

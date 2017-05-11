@@ -98,7 +98,7 @@ class RegistrationForm extends React.Component {
 
   render () {
     return (
-      <div className='card'>
+      <div id='registration' className='card'>
         <div className='card-header'>
           <h2>New Account</h2>
         </div>

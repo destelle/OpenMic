@@ -5,6 +5,10 @@
   color: white;
 }
 
+#login, #registration{
+  background-color: Transparent;
+}
+
 #popout{
   top: 100px;
   left: 40px;
@@ -13,13 +17,13 @@
   position: absolute;
   z-index: 10;
   color: white;
-  background-color: rgba(56,102,153,0.8);
 }
 
 #exit {
     background-color: Transparent;
     background-repeat:no-repeat;
-    position: relative;
+    position: absolute;
+    right:0;
     border: none;
     cursor:pointer;
     overflow: hidden;
@@ -47,4 +51,7 @@ h2{
 }
 #joining{
   padding:2%;
+}
+.errors{
+  padding-left: 2%;
 }

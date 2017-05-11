@@ -68,7 +68,7 @@ class Login extends React.Component {
       this.props.changeStates('Register')
     }
     return (
-      <div className='card'>
+      <div id='login' className='card'>
         <div className='card-header'>
           <h2>Log In</h2>
         </div>
