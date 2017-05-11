@@ -20,12 +20,23 @@ class Room extends React.Component {
     })
   })
 }
+deleteHandler(e){
+  e.preventDefault()
+  $.ajax({
+    url: '/rooms/' + this.props.room,
+    type: 'DELETE'
+  }).done((response) => {
+    this.props.changeStates('Home',this.props.sessionID,this.props.username)
+  })
+}
+
 adminView(){
   if(this.props.sessionID == this.state.adminId){
     return(
       <div>
         <h3>To allow users to Join give them this code:</h3>
         <h4>{this.state.roomPassword}</h4>
+        <button type='button' className='btn btn-default' href='#' onClick={this.deleteHandler.bind(this)}>Delete Room</button>
       </div>
     )
   }

@@ -48,6 +48,11 @@ end
     end
   end
 
+  def destroy
+    Room.destroy(params[:id])
+    render json: { message: 'Room successfully Deleted' }
+  end
+
 private
 def room_params
   params.require(:room).permit(:password)
