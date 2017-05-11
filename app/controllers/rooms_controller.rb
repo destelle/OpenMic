@@ -50,6 +50,8 @@ end
 
   def destroy
     Room.destroy(params[:id])
+    user = User.find(session[:user_id])
+    user.created_room = nil
     render json: { message: 'Room successfully Deleted' }
   end
 

@@ -2,14 +2,17 @@ class SessionsController < ApplicationController
   def show
     if session[:user_id]
       user = User.find(session[:user_id])
-      render json: {sessionID: user.id, userName: user.name, userRoom: user.created_room.id }
+      room = nil
+      if user.created_room != nil
+        room = user.created_room.id
+      end
+      render json: {sessionID: user.id, userName: user.name, userRoom: room }
     else
       render json: {sessionID: nil}
     end
   end
 
   def create
-    p session_params['email']
     user = User.find_by(email: session_params[:email])
     if !user || !user.authenticate(session_params[:password])
       render json: {
