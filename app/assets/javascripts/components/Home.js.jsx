@@ -28,11 +28,10 @@ class Home extends React.Component {
     request.success(function (response) {
       page.props.changeStates('Room', page.props.sessionID, page.props.username, response['roomId'])
     })
-    request.fail(function(response){
+    request.fail((response)=> {
+      var error = response.responseJSON['errors']
       page.setState({
-        mode: 'Home',
-        errors: response.errors,
-        room: null
+        errors: error
       })
     })
   }

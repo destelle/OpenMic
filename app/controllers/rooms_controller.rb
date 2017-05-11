@@ -35,9 +35,7 @@ end
   end
 
   def join
-    p 'hit here'
     room = Room.find_by(room_params)
-    p room 
     if room
       user = User.find(room.admin_id)
       render json: {
@@ -45,8 +43,8 @@ end
       }
     else
       render json: {
-        errors: 'No Room found'
-      }, status: 400
+        errors: 'No Room Found'
+      },status: 400
     end
   end
 

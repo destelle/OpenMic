@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    p session_params['email']
     user = User.find_by(email: session_params[:email])
     if !user || !user.authenticate(session_params[:password])
       render json: {
@@ -16,7 +17,11 @@ class SessionsController < ApplicationController
       }, status: 400
     else
       session[:user_id] = user.id
-      render json: { user_id: user.id, user_name: user.name, user_room: user.created_room.id }, status: :created
+      room = nil
+      if user.created_room != nil
+        room = user.created_room.id
+      end
+      render json: { user_id: user.id, user_name: user.name, user_room: room }, status: :created
     end
   end
 

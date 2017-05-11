@@ -17,7 +17,7 @@ class Content extends React.Component {
     })
     request.done((response) => {
 
-      if (response.userRoom) {
+      if (response.userRoom != null) {
         this.changeStates('Room', response.sessionID, response.userName, response.userRoom)
       }
       else if(response.sessionID) {

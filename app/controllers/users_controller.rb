@@ -12,6 +12,7 @@ class UsersController < ApplicationController
           errors: user.errors.messages
         }, status: 400
       end
+      p user
   end
 
   private

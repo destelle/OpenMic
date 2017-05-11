@@ -70,6 +70,7 @@ class RegistrationForm extends React.Component {
       })
     })
     request.success((successfulRegistration) => {
+      debugger
       form.setState({
         errors: null
       })
