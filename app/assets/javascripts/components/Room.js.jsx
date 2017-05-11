@@ -20,14 +20,23 @@ class Room extends React.Component {
     })
   })
 }
+adminView(){
+  if(this.props.sessionID == this.state.adminId){
+    return(
+      <div>
+        <h3>To allow users to Join give them this code:</h3>
+        <h4>{this.state.roomPassword}</h4>
+      </div>
+    )
+  }
+}
 
   render(){
     return(
       <div className='room-show'>
         <div className='header'>
             <h2>{this.state.adminName}'s Room</h2>
-            <h3>To allow users to Join give them this code:</h3>
-            <h4>{this.state.roomPassword}</h4>
+            {this.adminView()}
         </div>
       </div>
     )
