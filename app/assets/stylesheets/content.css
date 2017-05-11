@@ -11,12 +11,14 @@
 
 #popout{
   top: 100px;
-  left: 40px;
+  left: 30px;
   width: 300px;
   height: auto;
   position: absolute;
+  background-color: gray;
   z-index: 10;
   color: white;
+  background-blend-mode: darken;
 }
 
 #exit {
